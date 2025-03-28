@@ -1,0 +1,13 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: latest
+  build:
+    commands:
+      - echo "Zipping application..."
+      - zip -r my-html-app.zip .
+      - aws s3 cp my-html-app.zip s3://my-html-deployment-bucket/
+artifacts:
+  files:
+    - my-html-app.zip
